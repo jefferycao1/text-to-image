@@ -29,6 +29,9 @@ if dataset == '102flowers':
     captions_dict = {}
     processed_capts = []
     for sub_dir in caption_sub_dir: # get caption file list
+        if sub_dir[-5:len(test)] == "00001":
+            print("passed")
+            continue
         with tl.ops.suppress_stdout():
             files = tl.files.load_file_list(path=sub_dir, regx='^image_[0-9]+\.txt')
             for i, f in enumerate(files):
@@ -91,6 +94,8 @@ if dataset == '102flowers':
     images_256 = []
     for name in imgs_title_list:
         # print(name)
+        if int(name[6:11]) >= 6734 and int(name[6:11]) <= 6773:
+            continue
         img_raw = scipy.misc.imread( os.path.join(img_dir, name) )
         img = tl.prepro.imresize(img_raw, size=[64, 64])    # (64, 64, 3)
         img = img.astype(np.float32)
@@ -158,13 +163,15 @@ if dataset == '102flowers':
     # # tl.visualize.images2d(b_images, second=5, saveable=True, name='temp2')
     # exit()
 
-import pickle
+# import pickle
+from sklearn.externals import joblib
 def save_all(targets, file):
     with open(file, 'wb') as f:
-        pickle.dump(targets, f)
+        joblib.dump(targets, f)
+        # pickle.dump(targets, f)
 
-save_all(vocab, '_vocab.pickle')
-save_all((images_train_256, images_train), '_image_train.pickle')
-save_all((images_test_256, images_test), '_image_test.pickle')
-save_all((n_captions_train, n_captions_test, n_captions_per_image, n_images_train, n_images_test), '_n.pickle')
-save_all((captions_ids_train, captions_ids_test), '_caption.pickle')
+save_all(vocab, '_vocab.sav')
+save_all((images_train_256, images_train), '_image_train.sav')
+save_all((images_test_256, images_test), '_image_test.sav')
+save_all((n_captions_train, n_captions_test, n_captions_per_image, n_images_train, n_images_test), '_n.sav')
+save_all((captions_ids_train, captions_ids_test), '_caption.sav')

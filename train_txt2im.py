@@ -19,16 +19,18 @@ import model
 ###======================== PREPARE DATA ====================================###
 print("Loading data from pickle ...")
 import pickle
-with open("_vocab.pickle", 'rb') as f:
-    vocab = pickle.load(f)
-with open("_image_train.pickle", 'rb') as f:
-    _, images_train = pickle.load(f)
-with open("_image_test.pickle", 'rb') as f:
-    _, images_test = pickle.load(f)
-with open("_n.pickle", 'rb') as f:
-    n_captions_train, n_captions_test, n_captions_per_image, n_images_train, n_images_test = pickle.load(f)
-with open("_caption.pickle", 'rb') as f:
-    captions_ids_train, captions_ids_test = pickle.load(f)
+from sklearn.externals import joblib
+with open("_vocab.sav", 'rb') as f:
+    vocab = joblib.load(f)
+print("done vocab load")
+with open("_image_train.sav", 'rb') as f:
+    _, images_train = joblib.load(f)
+with open("_image_test.sav", 'rb') as f:
+    _, images_test = joblib.load(f)
+with open("_n.sav", 'rb') as f:
+    n_captions_train, n_captions_test, n_captions_per_image, n_images_train, n_images_test = joblib.load(f)
+with open("_caption.sav", 'rb') as f:
+    captions_ids_train, captions_ids_test = joblib.load(f)
 # images_train_256 = np.array(images_train_256)
 # images_test_256 = np.array(images_test_256)
 images_train = np.array(images_train)
