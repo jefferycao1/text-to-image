@@ -126,42 +126,6 @@ if dataset == '102flowers':
     print("n_images_train:%d n_captions_train:%d" % (n_images_train, n_captions_train))
     print("n_images_test:%d  n_captions_test:%d" % (n_images_test, n_captions_test))
 
-    ## check test image
-    # idexs = get_random_int(min=0, max=n_captions_test-1, number=64)
-    # temp_test_capt = captions_ids_test[idexs]
-    # for idx, ids in enumerate(temp_test_capt):
-    #     print("%d %s" % (idx, [vocab.id_to_word(id) for id in ids]))
-    # temp_test_img = images_train[np.floor(np.asarray(idexs).astype('float')/n_captions_per_image).astype('int')]
-    # save_images(temp_test_img, [8, 8], 'temp_test_img.png')
-    # exit()
-
-    # ## check the first example
-    # tl.visualize.frame(I=images[0], second=5, saveable=True, name='temp', cmap=None)
-    # for cap in captions_dict[1]:
-    #     print(cap)
-    # print(captions_ids[0:10])
-    # for ids in captions_ids[0:10]:
-    #     print([vocab.id_to_word(id) for id in ids])
-    # print_dict(captions_dict)
-
-    # ## generate a random batch
-    # batch_size = 64
-    # idexs = get_random_int(0, n_captions_test, batch_size)
-    # # idexs = [i for i in range(0,100)]
-    # print(idexs)
-    # b_seqs = captions_ids_test[idexs]
-    # b_images = images_test[np.floor(np.asarray(idexs).astype('float')/n_captions_per_image).astype('int')]
-    # print("before padding %s" % b_seqs)
-    # b_seqs = tl.prepro.pad_sequences(b_seqs, padding='post')
-    # print("after padding %s" % b_seqs)
-    # # print(input_images.shape)   # (64, 64, 64, 3)
-    # for ids in b_seqs:
-    #     print([vocab.id_to_word(id) for id in ids])
-    # print(np.max(b_images), np.min(b_images), b_images.shape)
-    # from utils import *
-    # save_images(b_images, [8, 8], 'temp2.png')
-    # # tl.visualize.images2d(b_images, second=5, saveable=True, name='temp2')
-    # exit()
 
 # import pickle
 from sklearn.externals import joblib
