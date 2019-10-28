@@ -12,7 +12,7 @@ from utils import *
 dataset = '102flowers' #
 need_256 = True # set to True for stackGAN
 
-nltk.downlaod('punkt')
+nltk.download('punkt')
 
 if dataset == '102flowers':
     """
