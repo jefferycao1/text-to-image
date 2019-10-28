@@ -7,7 +7,7 @@ import re
 import string
 import tensorlayer as tl
 from utils import *
-
+import imageio
 
 dataset = '102flowers' #
 need_256 = True # set to True for stackGAN
@@ -96,7 +96,7 @@ if dataset == '102flowers':
         # print(name)
         if int(name[6:11]) >= 6734 and int(name[6:11]) <= 6773:
             continue
-        img_raw = scipy.misc.imread( os.path.join(img_dir, name) )
+        img_raw = imageio.imread( os.path.join(img_dir, name) )
         img = tl.prepro.imresize(img_raw, size=[64, 64])    # (64, 64, 3)
         img = img.astype(np.float32)
         images.append(img)
