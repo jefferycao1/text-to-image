@@ -29,7 +29,7 @@ if dataset == '102flowers':
     captions_dict = {}
     processed_capts = []
     for sub_dir in caption_sub_dir: # get caption file list
-        if sub_dir[-5:len(test)] == "00001":
+        if sub_dir[-5:len(sub_dir)] == "00001":
             print("passed")
             continue
         with tl.ops.suppress_stdout():
